@@ -11,6 +11,6 @@ py-vapid==1.4.0
 pycparser==2.18
 pytz==2018.5
 pywebpush==1.6.0
-requests==2.19.1
+requests==2.20.0
 six==1.11.0
 urllib3==1.23
