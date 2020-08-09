@@ -22,6 +22,7 @@ function urlB64ToUnit8Array(base64String) {
 const registerSw = async () => {
     if ('serviceWorker' in navigator) {
         const reg = await navigator.serviceWorker.register('sw.js');
+        console.log(reg)
         initialiseState(reg)
 
     } else {
@@ -53,8 +54,8 @@ const subscribe = async (reg) => {
         return;
     }
 
-    const vapidMeta = document.querySelector('meta[name="vapid-key"]');
-    const key = vapidMeta.content;
+    // const vapidMeta = document.querySelector('meta[name="vapid-key"]');
+    const key = "BG2Kb97s399EpFuQJvxKj5AaNR7HvThUGwTx8K9GZ_suy-Lk8n0CaFhhilVZhH7WtibrSGD04kSNocKvFXiKbcM"
     const options = {
         userVisibleOnly: true,
         // if key exists, create applicationServerKey property
@@ -67,12 +68,14 @@ const subscribe = async (reg) => {
 
 const sendSubData = async (subscription) => {
     const browser = navigator.userAgent.match(/(firefox|msie|chrome|safari|trident)/ig)[0].toLowerCase();
-    console.log(browser);
+    console.log(subscription);
     const data = {
         status_type: 'subscribe',
-        subscription: subscription.toJSON(),
+        subscription: subscription,
         browser: browser,
     };
+
+    console.log(data)
 
     const res = await fetch('/webpush/save_information', {
         method: 'POST',

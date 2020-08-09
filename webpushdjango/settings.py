@@ -24,7 +24,7 @@ SECRET_KEY = 'mxxyic-3k(g_q7=r_)r=#6u@@imjdii(o=fm(ye=7*)yj$k7!6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','22274a35.ngrok.io', ]
+ALLOWED_HOSTS = ['127.0.0.1','f1116fef46cd.ngrok.io', ]
 
 # Application definition
 
@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webpush'
+    'webpush',
+    'Users'
 ]
 
 MIDDLEWARE = [
@@ -71,12 +72,25 @@ WSGI_APPLICATION = 'webpushdjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Madakoraa',
+        'USER': 'root',
+        'PASSWORD': 'p@ssword',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+AUTH_USER_MODEL = 'Users.Users'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
